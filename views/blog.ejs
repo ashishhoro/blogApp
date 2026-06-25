@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>
+        <%= blog.title %>
+    </title>
+    <%- include("./partials/head")%>
+</head>
+
+<body>
+    <%- include("./partials/nav")%>
+        <div class="container mt-3" style="background-color: #414141;">
+            <h1 class="title">
+                <%= blog.title %>
+            </h1>
+
+            <div class="blog-createdAt">
+
+                <div class="author mb-3">
+                    <p style="display: inline;" class="card-text"><small class="text-body-primary">
+                            <%= blog.createdAt.toLocaleString() %> :: by
+                        </small>
+                    </p>
+                    <img src="<%= blog.createdBy.profileImageUrl %>" width="50px" />
+                    <%= blog.createdBy.fullName %>
+                </div>
+            </div>
+
+            <img src="/<%= blog.coverImageUrl %>" width="900px" />
+            <pre class="body mt-3" style="max-width: max-content;">
+                <%= blog.body %>
+            </pre>
+        </div>
+        </div>
+
+        <div class="container mt-3" style="margin-right: 30px;">
+            <%if(locals.user){%>
+
+                <h5>Comments (<%= comments.length%>)</h5>
+                <form action="/blog/comment/<%= blog._id%>" method="post">
+
+                    <div class="mb-3">
+                        <input type="text" name="content" class="form-control" id="comment"
+                            placeholder="Enter your comment...">
+                    </div>
+
+                    <button type="submit" class="btn btn-primary">Done</button>
+                </form>
+                
+                <div class="mt-3">
+                    <%comments.forEach(comment=> { %>
+                        <div class="comment">
+                            <img src="<%= comment.createdBy.profileImageUrl %>" width="50px" />
+                            <%= comment.createdBy.fullName %>
+
+                                <pre><%=comment.content%></pre>
+                        </div>
+                        <%})%>
+                </div>
+
+                <%}else {%>
+                    <div class="comments">
+                        <h5>Comments (<%=comments.length%>)</h5>
+                    </div>
+                    <div class="mt-3">
+                        <%comments.forEach(comment=> { %>
+                            <div class="comment">
+                                <img src="<%= comment.createdBy.profileImageUrl %>" width="50px" />
+                                <%= comment.createdBy.fullName %>
+
+                                    <pre><%=comment.content%></pre>
+                            </div>
+                            <%})%>
+                    </div>
+                    <%}%>
+        </div>
+        <%- include("./partials/scripts")%>
+</body>
+
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include("./partials/head")%>
+</head>
+<body>
+    <%- include("./partials/nav") -%>
+
+    <div class="container mt-3 d-flex justify-content-center align-items-center flex-column mb-3">
+        <div class="signup-logo text-primary"> <h2>Sign In page</h2></div>
+
+        <form action="/user/signin" method="post">
+       
+        <div class="mb-3">
+            <label for="email" class="form-label">Email</label>
+            <input type="email" class="form-control" id="email" name="email" aria-describedby="email">
+        </div>
+        <div class="mb-3">
+            <label for="password" class="form-label">Password</label>
+            <input type="password" id="password" name="password" class="form-control">
+        </div>
+
+        <button type="submit" class="btn btn-primary">Signin</button>
+    </form>
+    </div>
+
+    <%- include("./partials/scripts") -%>
+
+</body>
+</html>

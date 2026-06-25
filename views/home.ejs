@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <%- include("./partials/head")%>
+</head>
+
+<body>
+    <%- include("./partials/nav")%>
+        <%- JSON.stringify(user) %>
+
+            <div class="container mt-3" style="background-color: #414141;">
+                <div class="row row-cols-3">
+                    <% blogs.forEach(blog=> { %>
+                        <div class="col">
+                            <div class="card mb-3">
+                                <img src="<%= blog.coverImageUrl %>" class="card-img-top"
+                                    alt="<%= blog._id %> coverImage ">
+                                <div class="card-body">
+                                    <h5 class="card-title">
+                                        <%=blog.title%>
+                                    </h5>
+                                    <p class="card-text">
+                                        <%= blog.body.slice(0,50) %>...
+                                    </p>
+                                    <a style="text-decoration: none;" href="/blog/<%= blog._id %> ">see more....</a>
+                                    <p class="card-text"><small class="text-body-secondary">
+                                            <%= blog.createdAt.toLocaleTimeString() %>
+                                        </small></p>
+                                </div>
+                            </div>
+                        </div>
+                    <% }) %>
+                </div>
+            </div>
+            <%- include("./partials/scripts")%>
+
+</body>
+
+</html>

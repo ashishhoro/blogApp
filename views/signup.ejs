@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include("./partials/head")%>
+</head>
+<body>
+    <!-- <%- include("./partials/nav")%> -->
+    <div class="container mt-3 d-flex justify-content-center align-items-center flex-column mb-3">
+        <div class="signup-logo text-primary"> <h2>Sign Up page</h2></div>
+
+        <form action="/user/signup" method="post">
+        <div class="mb-3">
+            <label for="fullName" class="form-label">Full Name</label>
+            <input type="text" id="fullName" name="fullName" class="form-control" aria-describedby="fullName">
+        </div>
+        <div class="mb-3">
+            <label for="email" class="form-label">Email</label>
+            <input type="email" class="form-control" id="email" name="email" aria-describedby="email">
+        </div>
+        <div class="mb-3">
+            <label for="password" class="form-label">Password</label>
+            <input type="password" id="password" name="password" class="form-control">
+        </div>
+
+        <button type="submit" class="btn btn-primary">Signup</button>
+    </form>
+    </div>
+
+    <%- include("./partials/scripts")%>
+
+</body>
+</html>
