@@ -1,0 +1,25 @@
+name: Deploy nodejs application to Render
+
+on: 
+  push:
+   branches:
+    - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Deploy via SHH
+        uses:appleboy/shh-action@1.0.3
+        with:
+          host: ${{ secrets.SSH_HOST }}
+          username: root
+          key: ${{ secrets.SHH_KEY }}
+          script: |
+            cd /root/blogApp
+            git pull
+            docker compose up -d --build
