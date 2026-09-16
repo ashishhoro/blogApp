@@ -18,7 +18,7 @@ jobs:
         with:
           host: ${{ secrets.SSH_HOST }}
           username: root
-          key: ${{ secrets.SHH_KEY }}
+          # key: ${{ secrets.SHH_KEY }}
           script: |
             cd /root/blogApp
             git pull
